@@ -15,7 +15,8 @@
              title="MageAI Predict"
              translate="title"
              module="Mageprince_MageAIPredict"
-             sortOrder="51"
+             sortOrder="100"
+             parent="Magento_Catalog::catalog"
              resource="Mageprince_MageAIPredict::forecast"/>
         <add id="Mageprince_MageAIPredict::forecast"
              title="Demand Forecast"
