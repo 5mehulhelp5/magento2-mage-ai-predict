@@ -94,3 +94,8 @@ You're very welcome to join in.
 - **v1 (current)** — statistical baseline, AI adjustment + rationale, reorder/overstock alerts, colour-coded grid + summary cards, scheduled cron
 - **v1.1** — external signals (weather forecasts, regional festival/holiday calendar), dashboard widget, email/admin reorder notifications
 - **v2** — bill-of-materials (BOM): explode finished-goods demand into raw-material requirements, with supplier lead-time tracking
+
+## Admin Grid Screenshot
+
+<img width="2878" height="1820" alt="mageprince-mageai-AI-Demand-Forecast-MageAI-Predict-Magento-Admin-07-22-2026_07_50_PM" src="https://github.com/user-attachments/assets/485b2591-64ef-4dc4-9f4e-c87c8f32797b" />
+
