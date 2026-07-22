@@ -1,0 +1,132 @@
+/**
+ * Mageprince
+ *
+ * @category    Mageprince
+ * @package     Mageprince_MageAIPredict
+ * @copyright   Copyright (c) Mageprince (https://mageprince.com/)
+ * @license     https://mageprince.com/end-user-license-agreement
+ */
+
+/* ---------------------------------------------------------------------------
+   Status / confidence badges
+--------------------------------------------------------------------------- */
+.mp-forecast-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.6rem;
+    white-space: nowrap;
+    border: 1px solid transparent;
+}
+
+/* Status colours */
+.mp-status-out_of_stock_risk {
+    background-color: #fde8e8;
+    color: #b91c1c;
+    border-color: #f5b5b5;
+}
+
+.mp-status-reorder_soon {
+    background-color: #fff4e0;
+    color: #b45309;
+    border-color: #f6d08a;
+}
+
+.mp-status-overstock {
+    background-color: #e7f0fb;
+    color: #1d5fbf;
+    border-color: #b9d2f2;
+}
+
+.mp-status-healthy {
+    background-color: #e6f4ea;
+    color: #1e7e34;
+    border-color: #b3ddc0;
+}
+
+/* Confidence colours */
+.mp-conf-high {
+    background-color: #e6f4ea;
+    color: #1e7e34;
+    border-color: #b3ddc0;
+}
+
+.mp-conf-medium {
+    background-color: #fff4e0;
+    color: #b45309;
+    border-color: #f6d08a;
+}
+
+.mp-conf-low {
+    background-color: #f1f1f1;
+    color: #6b6b6b;
+    border-color: #d9d9d9;
+}
+
+/* ---------------------------------------------------------------------------
+   Summary dashboard cards
+--------------------------------------------------------------------------- */
+.mp-forecast-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 0 0 20px;
+}
+
+.mp-forecast-card {
+    flex: 1 1 180px;
+    min-width: 160px;
+    background: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid #adadad;
+}
+
+.mp-forecast-card .mp-card-value {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #303030;
+}
+
+.mp-forecast-card .mp-card-label {
+    display: block;
+    margin-top: 4px;
+    font-size: 1.25rem;
+    color: #6b6b6b;
+}
+
+.mp-forecast-card .mp-card-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 1.1rem;
+    color: #9b9b9b;
+}
+
+.mp-card-critical {
+    border-left-color: #b91c1c;
+}
+
+.mp-card-critical .mp-card-value {
+    color: #b91c1c;
+}
+
+.mp-card-warning {
+    border-left-color: #b45309;
+}
+
+.mp-card-info {
+    border-left-color: #1d5fbf;
+}
+
+.mp-card-success {
+    border-left-color: #1e7e34;
+}
+
+.mp-card-neutral {
+    border-left-color: #6b6b6b;
+}

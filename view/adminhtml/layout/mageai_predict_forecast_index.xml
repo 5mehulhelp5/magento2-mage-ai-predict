@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageprince
+ *
+ * @category    Mageprince
+ * @package     Mageprince_MageAIPredict
+ * @copyright   Copyright (c) Mageprince (https://mageprince.com/)
+ * @license     https://mageprince.com/end-user-license-agreement
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <head>
+        <css src="Mageprince_MageAIPredict::css/forecast-grid.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Mageprince\MageAIPredict\Block\Adminhtml\Forecast\Summary"
+                   name="mageai_predict.forecast.summary"
+                   template="Mageprince_MageAIPredict::forecast/summary.phtml"/>
+            <uiComponent name="mageai_predict_forecast_listing"/>
+        </referenceContainer>
+    </body>
+</page>

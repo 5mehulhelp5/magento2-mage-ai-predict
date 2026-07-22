@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageprince
+ *
+ * @category    Mageprince
+ * @package     Mageprince_MageAIPredict
+ * @copyright   Copyright (c) Mageprince (https://mageprince.com/)
+ * @license     https://mageprince.com/end-user-license-agreement
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageprince_MageAIPredict::main"
+             title="MageAI Predict"
+             translate="title"
+             module="Mageprince_MageAIPredict"
+             sortOrder="51"
+             resource="Mageprince_MageAIPredict::forecast"/>
+        <add id="Mageprince_MageAIPredict::forecast"
+             title="Demand Forecast"
+             translate="title"
+             module="Mageprince_MageAIPredict"
+             sortOrder="10"
+             parent="Mageprince_MageAIPredict::main"
+             action="mageai_predict/forecast/index"
+             resource="Mageprince_MageAIPredict::forecast"/>
+        <add id="Mageprince_MageAIPredict::config"
+             title="Configuration"
+             translate="title"
+             module="Mageprince_MageAIPredict"
+             sortOrder="20"
+             parent="Mageprince_MageAIPredict::main"
+             action="adminhtml/system_config/edit/section/mageai_predict"
+             resource="Mageprince_MageAIPredict::configuration"/>
+    </menu>
+</config>

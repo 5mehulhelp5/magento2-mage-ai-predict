@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageprince
+ *
+ * @category    Mageprince
+ * @package     Mageprince_MageAIPredict
+ * @copyright   Copyright (c) Mageprince (https://mageprince.com/)
+ * @license     https://mageprince.com/end-user-license-agreement
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mageai_predict" translate="label" sortOrder="21" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>MageAI Predict (Demand Forecast)</label>
+            <tab>mageprince</tab>
+            <resource>Mageprince_MageAIPredict::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1">
+                <label>General</label>
+                <comment>Uses the AI provider configured under Mage AI for the optional AI adjustment layer.</comment>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Enable Forecasting</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="use_ai" translate="label comment" type="select" sortOrder="20" showInDefault="1">
+                    <label>Use AI Adjustment</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>When disabled, forecasts use the statistical baseline only (no API calls, faster and free).</comment>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+            </group>
+            <group id="forecast" translate="label" type="text" sortOrder="20" showInDefault="1">
+                <label>Forecast Settings</label>
+                <field id="history_years" translate="label comment" type="text" sortOrder="10" showInDefault="1">
+                    <label>Sales History (years)</label>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                    <comment>How many years of historical sales to analyse (2-3 recommended).</comment>
+                </field>
+                <field id="lead_time_days" translate="label comment" type="text" sortOrder="20" showInDefault="1">
+                    <label>Restock Lead Time (days)</label>
+                    <validate>validate-digits</validate>
+                    <comment>Days between placing a restock/raw-material order and receiving it.</comment>
+                </field>
+                <field id="safety_stock_days" translate="label comment" type="text" sortOrder="30" showInDefault="1">
+                    <label>Safety Stock (days of demand)</label>
+                    <validate>validate-digits</validate>
+                    <comment>Buffer stock expressed as days of forecast demand.</comment>
+                </field>
+                <field id="overstock_multiplier" translate="label comment" type="text" sortOrder="40" showInDefault="1">
+                    <label>Overstock Threshold (x monthly demand)</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <comment>Flag as overstock when on-hand exceeds this many months of forecast demand.</comment>
+                </field>
+                <field id="max_products" translate="label comment" type="text" sortOrder="50" showInDefault="1">
+                    <label>Max Products Per Run</label>
+                    <validate>validate-digits</validate>
+                    <comment>0 = no limit. Limits how many products a single run processes (useful with AI enabled).</comment>
+                </field>
+                <field id="ai_prompt" translate="label comment" type="textarea" sortOrder="60" showInDefault="1">
+                    <label>AI Guidance Prompt</label>
+                    <comment>Extra instructions passed to the AI forecasting model (brand-specific demand context, etc.).</comment>
+                    <depends><field id="mageai_predict/general/use_ai">1</field></depends>
+                </field>
+            </group>
+            <group id="cron" translate="label" type="text" sortOrder="30" showInDefault="1">
+                <label>Scheduled Run</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Enable Scheduled Forecast</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="schedule" translate="label comment" type="text" sortOrder="20" showInDefault="1">
+                    <label>Cron Schedule</label>
+                    <comment>Standard cron expression, e.g. "0 3 * * *" for daily at 03:00.</comment>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

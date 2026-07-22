@@ -1,0 +1,24 @@
+<?php
+/**
+ * Mageprince
+ *
+ * @category    Mageprince
+ * @package     Mageprince_MageAIPredict
+ * @copyright   Copyright (c) Mageprince (https://mageprince.com/)
+ * @license     https://mageprince.com/end-user-license-agreement
+ *
+ * @var \Mageprince\MageAIPredict\Block\Adminhtml\Forecast\Summary $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+<?php if ($block->getTotalProducts() > 0): ?>
+    <div class="mp-forecast-summary">
+        <?php foreach ($block->getCards() as $card): ?>
+            <div class="mp-forecast-card <?= $escaper->escapeHtmlAttr($card['class']) ?>">
+                <span class="mp-card-value"><?= $escaper->escapeHtml($card['value']) ?></span>
+                <span class="mp-card-label"><?= $escaper->escapeHtml($card['label']) ?></span>
+                <span class="mp-card-hint"><?= $escaper->escapeHtml($card['hint']) ?></span>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

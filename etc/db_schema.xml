@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageprince
+ *
+ * @category    Mageprince
+ * @package     Mageprince_MageAIPredict
+ * @copyright   Copyright (c) Mageprince (https://mageprince.com/)
+ * @license     https://mageprince.com/end-user-license-agreement
+ */
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mageai_predict_forecast" resource="default" engine="innodb" comment="MageAI Predict Demand Forecast">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="int" name="product_id" unsigned="true" nullable="false" comment="Product ID"/>
+        <column xsi:type="varchar" name="sku" length="64" nullable="true" comment="SKU"/>
+        <column xsi:type="varchar" name="product_name" length="255" nullable="true" comment="Product Name"/>
+        <column xsi:type="date" name="period_start" nullable="true" comment="Forecast Period Start (first day of month)"/>
+        <column xsi:type="int" name="baseline_forecast" nullable="false" default="0" comment="Statistical baseline forecast (units)"/>
+        <column xsi:type="int" name="final_forecast" nullable="false" default="0" comment="Effective forecast used (AI-adjusted or baseline)"/>
+        <column xsi:type="smallint" name="ai_adjusted" unsigned="true" nullable="false" default="0" comment="Whether AI adjusted the baseline"/>
+        <column xsi:type="text" name="ai_rationale" nullable="true" comment="AI rationale / recommendation"/>
+        <column xsi:type="decimal" name="current_stock" scale="4" precision="20" nullable="false" default="0" comment="Current salable stock"/>
+        <column xsi:type="int" name="reorder_qty" nullable="false" default="0" comment="Recommended reorder quantity"/>
+        <column xsi:type="date" name="reorder_by_date" nullable="true" comment="Recommended reorder-by date"/>
+        <column xsi:type="varchar" name="status" length="32" nullable="false" default="healthy" comment="Forecast status"/>
+        <column xsi:type="varchar" name="confidence" length="16" nullable="false" default="low" comment="Forecast confidence"/>
+        <column xsi:type="decimal" name="seasonality_index" scale="3" precision="6" nullable="false" default="1" comment="Seasonality index applied"/>
+        <column xsi:type="decimal" name="trend_factor" scale="3" precision="6" nullable="false" default="1" comment="Trend factor applied"/>
+        <column xsi:type="smallint" name="months_of_data" unsigned="true" nullable="false" default="0" comment="Months of sales history observed"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="MAGEAI_PREDICT_FORECAST_PRODUCT_ID">
+            <column name="product_id"/>
+        </constraint>
+        <index referenceId="MAGEAI_PREDICT_FORECAST_STATUS" indexType="btree">
+            <column name="status"/>
+        </index>
+    </table>
+</schema>

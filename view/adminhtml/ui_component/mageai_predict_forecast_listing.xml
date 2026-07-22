@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageprince
+ *
+ * @category    Mageprince
+ * @package     Mageprince_MageAIPredict
+ * @copyright   Copyright (c) Mageprince (https://mageprince.com/)
+ * @license     https://mageprince.com/end-user-license-agreement
+ */
+ -->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">mageai_predict_forecast_listing.mageai_predict_forecast_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="generate">
+                <url path="mageai_predict/forecast/generate"/>
+                <class>primary</class>
+                <label translate="true">Generate Forecasts Now</label>
+            </button>
+        </buttons>
+        <spinner>mageai_predict_forecast_columns</spinner>
+        <deps>
+            <dep>mageai_predict_forecast_listing.mageai_predict_forecast_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="mageai_predict_forecast_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Mageprince_MageAIPredict::forecast</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="mageai_predict_forecast_listing_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button"/>
+    </listingToolbar>
+    <columns name="mageai_predict_forecast_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="product_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Product</label>
+            </settings>
+        </column>
+        <column name="sku">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">SKU</label>
+            </settings>
+        </column>
+        <column name="period_start" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Forecast Month</label>
+            </settings>
+        </column>
+        <column name="status" component="Mageprince_MageAIPredict/js/grid/columns/status">
+            <settings>
+                <options class="Mageprince\MageAIPredict\Model\Source\ForecastStatus"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <bodyTmpl>Mageprince_MageAIPredict/grid/cells/badge</bodyTmpl>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <column name="baseline_forecast">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Baseline Forecast</label>
+            </settings>
+        </column>
+        <column name="final_forecast">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Forecast (units)</label>
+            </settings>
+        </column>
+        <column name="current_stock">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Current Stock</label>
+            </settings>
+        </column>
+        <column name="reorder_qty">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Reorder Qty</label>
+            </settings>
+        </column>
+        <column name="reorder_by_date" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Reorder By</label>
+            </settings>
+        </column>
+        <column name="confidence" component="Mageprince_MageAIPredict/js/grid/columns/confidence">
+            <settings>
+                <filter>text</filter>
+                <bodyTmpl>Mageprince_MageAIPredict/grid/cells/badge</bodyTmpl>
+                <label translate="true">Confidence</label>
+            </settings>
+        </column>
+        <column name="ai_rationale">
+            <settings>
+                <label translate="true">AI Recommendation</label>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Updated</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageprince
+ *
+ * @category    Mageprince
+ * @package     Mageprince_MageAIPredict
+ * @copyright   Copyright (c) Mageprince (https://mageprince.com/)
+ * @license     https://mageprince.com/end-user-license-agreement
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mageai_predict>
+            <general>
+                <enabled>1</enabled>
+                <use_ai>1</use_ai>
+            </general>
+            <forecast>
+                <history_years>3</history_years>
+                <lead_time_days>14</lead_time_days>
+                <safety_stock_days>7</safety_stock_days>
+                <overstock_multiplier>3</overstock_multiplier>
+                <max_products>0</max_products>
+                <ai_prompt><![CDATA[Consider realistic retail demand behaviour. If recent months show a clear upward or downward trend, weight it. Account for the seasonality of the target month. Never forecast negative demand. Keep the rationale concise and merchant-friendly.]]></ai_prompt>
+            </forecast>
+            <cron>
+                <enabled>1</enabled>
+                <schedule>0 3 * * *</schedule>
+            </cron>
+        </mageai_predict>
+    </default>
+</config>

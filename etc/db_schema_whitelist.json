@@ -1,0 +1,32 @@
+{
+    "mageai_predict_forecast": {
+        "column": {
+            "entity_id": true,
+            "product_id": true,
+            "sku": true,
+            "product_name": true,
+            "period_start": true,
+            "baseline_forecast": true,
+            "final_forecast": true,
+            "ai_adjusted": true,
+            "ai_rationale": true,
+            "current_stock": true,
+            "reorder_qty": true,
+            "reorder_by_date": true,
+            "status": true,
+            "confidence": true,
+            "seasonality_index": true,
+            "trend_factor": true,
+            "months_of_data": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "MAGEAI_PREDICT_FORECAST_STATUS": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MAGEAI_PREDICT_FORECAST_PRODUCT_ID": true
+        }
+    }
+}

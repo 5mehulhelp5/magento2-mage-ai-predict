@@ -1,0 +1,25 @@
+{
+    "name": "mageprince/magento2-mage-ai-predict",
+    "description": "Magento 2 AI Predictive Inventory & Raw Material Forecaster (MageAI add-on)",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Mageprince",
+            "email": "support@mageprince.com"
+        }
+    ],
+    "require": {
+        "php": "~8.1.0||~8.2.0||~8.3.0||~8.4.0",
+        "mageprince/magento2-mage-ai": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Mageprince\\MageAIPredict\\": ""
+        }
+    }
+}
